@@ -6,6 +6,7 @@ from discord.ext import commands
 from discord.ext.commands import BucketType
 
 from .api.color import color
+from .api.time import formatTime
 
 
 class Plugin(commands.Cog):
@@ -14,7 +15,7 @@ class Plugin(commands.Cog):
 
     @commands.command(name='plugin')
     @commands.cooldown(1, 2, BucketType.user)
-    async def _plugin(self, ctx, query: str):
+    async def _plugin(self, ctx, *, query: str):
         async with ctx.typing():
             try:
                 plugin = minehut.getPlugin(query)
@@ -23,8 +24,8 @@ class Plugin(commands.Cog):
                     text="Requested by " + ctx.author.name)
                 embed.add_field(name="ID", value=plugin.getId())
                 embed.add_field(name="Version", value=plugin.getVersion())
-                embed.add_field(name="Creation", value=plugin.getCreatedDatetime(), inline=False)
-                embed.add_field(name="Last Updated", value=plugin.getLastUpdatedDatetime())
+                embed.add_field(name="Created", value=formatTime(plugin.getCreatedDatetime()), inline=False)
+                embed.add_field(name="Last Updated", value=formatTime(plugin.getLastUpdatedDatetime()))
                 embed.add_field(name="Description", value=plugin.getLongDescription(), inline=False)
                 await ctx.send(embed=embed)
             except Exception as e:
