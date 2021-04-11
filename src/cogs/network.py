@@ -15,7 +15,7 @@ class Network(commands.Cog):
         try:
             async with ctx.typing():
                 embed = Embed(title='Network', timestamp=datetime.now(), color=color.minehut).set_footer(
-                    text="Requested by " + ctx.author)
+                    text="Requested by " + ctx.author.name)
                 embed.add_field(name='Players Online', value=f"{minehut.getPlayerCount():,d}")
                 embed.add_field(name='Severs Online', value=f"{minehut.getServerCount():,d}")
                 embed.add_field(name='Server Max', value=f"{minehut.getServerCap():,d}")

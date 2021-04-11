@@ -14,7 +14,7 @@ class Core(commands.Cog):
     async def _help(self, ctx, query=None):
         if query is None:
             embed = Embed(title="Help").set_footer(
-                text="Requested by " + ctx.author)
+                text="Requested by " + ctx.author.name)
         else:
             await ctx.send(commandEmbed("_" + query))
 
