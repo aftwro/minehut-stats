@@ -15,16 +15,22 @@ class Plugin(commands.Cog):
     @commands.command(name='plugin')
     @commands.cooldown(1, 2, BucketType.user)
     async def _plugin(self, ctx, query: str):
-        try:
-            plugin = minehut.getPlugin(query)
-            embed = Embed(title=plugin.getName(), timestamp=datetime.now(),
-                          color=color.minehut).set_footer(
-                text="Requested by " + ctx.author.name)
-            await ctx.send(embed=embed)
-        except Exception as e:
-            await ctx.send(embed=Embed(description=e, timestamp=datetime.now(),
-                                       color=color.error).set_footer(
-                text="Requested by " + ctx.author.name))
+        async with ctx.typing():
+            try:
+                plugin = minehut.getPlugin(query)
+                embed = Embed(title=plugin.getName(), description=plugin.getLongDescription(), timestamp=datetime.now(),
+                              color=color.minehut).set_footer(
+                    text="Requested by " + ctx.author.name)
+                embed.add_field(name="Name", value=plugin.getName())
+                embed.add_field(name="ID", value=plugin.getId())
+                embed.add_field(name="Version", value=plugin.getVersion())
+                embed.add_field(name="Creation", value=plugin.getCreatedDatetime(), inline=False)
+                embed.add_field(name="Last Updated", value=plugin.getLastUpdatedDatetime(), inline=False)
+                await ctx.send(embed=embed)
+            except Exception as e:
+                await ctx.send(embed=Embed(description=e, timestamp=datetime.now(),
+                                           color=color.error).set_footer(
+                    text="Requested by " + ctx.author.name))
 
 
 def setup(client):
