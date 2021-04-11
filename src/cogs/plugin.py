@@ -17,18 +17,15 @@ class Plugin(commands.Cog):
     @commands.cooldown(1, 2, BucketType.user)
     async def _plugin(self, ctx, query: str):
         try:
-            try:
-                plugin = minehut.getPlugin(query)
-                embed = Embed(title=plugin.getName(), timestamp=datetime.now(),
-                                           color=color.minehut).set_footer(
-                    text="Requested by " + ctx.author.name)
-                await ctx.send(embed=embed)
-            except IllegalArgumentError:
-                await ctx.send(embed=Embed(description="Server was not found.", timestamp=datetime.now(),
-                                           color=color.error).set_footer(
-                    text="Requested by " + ctx.author.name))
-        except Exception as e:
-            print(e)
+            plugin = minehut.getPlugin(query)
+            embed = Embed(title=plugin.getName(), timestamp=datetime.now(),
+                          color=color.minehut).set_footer(
+                text="Requested by " + ctx.author.name)
+            await ctx.send(embed=embed)
+        except IllegalArgumentError:
+            await ctx.send(embed=Embed(description="Server was not found.", timestamp=datetime.now(),
+                                       color=color.error).set_footer(
+                text="Requested by " + ctx.author.name))
 
 
 def setup(client):
