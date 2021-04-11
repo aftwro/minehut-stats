@@ -3,14 +3,17 @@ from datetime import datetime
 import minehut
 from discord import Embed
 from discord.ext import commands
+from discord.ext.commands import BucketType
 
 from .api.color import color
+
 
 class Network(commands.Cog):
     def __init__(self, client):
         self.client = client
 
     @commands.command(name='network')
+    @commands.cooldown(1, 2, BucketType.user)
     async def _network(self, ctx):
         try:
             async with ctx.typing():

@@ -11,7 +11,8 @@ def commandEmbed(author, command: str) -> Embed:
         data = json.load(file)
     if command in data:
         data = data[command]
-        embed = Embed(title=command.strip('_'), description=data['description'], color=color.info).set_footer(
+        embed = Embed(title=command.strip('_'), description=data['description'], color=color.info,
+                      timestamp=datetime.now()).set_footer(
             text="Requested by " + author.name)
         if data['aliases'] is not None:
             embed.add_field(name="Aliases", value=data['aliases'])
