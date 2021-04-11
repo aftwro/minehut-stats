@@ -21,10 +21,9 @@ class Plugin(commands.Cog):
                 embed = Embed(title=plugin.getName(), timestamp=datetime.now(),
                               color=color.minehut).set_footer(
                     text="Requested by " + ctx.author.name)
-                embed.add_field(name="Name", value=plugin.getName())
                 embed.add_field(name="ID", value=plugin.getId())
                 embed.add_field(name="Version", value=plugin.getVersion())
-                embed.add_field(name="Creation", value=plugin.getCreatedDatetime())
+                embed.add_field(name="Creation", value=plugin.getCreatedDatetime(), inline=False)
                 embed.add_field(name="Last Updated", value=plugin.getLastUpdatedDatetime())
                 embed.add_field(name="Description", value=plugin.getLongDescription(), inline=False)
                 await ctx.send(embed=embed)
