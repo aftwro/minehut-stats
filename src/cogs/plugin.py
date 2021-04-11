@@ -26,7 +26,7 @@ class Plugin(commands.Cog):
                 embed.add_field(name="Version", value=plugin.getVersion())
                 embed.add_field(name="Creation", value=plugin.getCreatedDatetime())
                 embed.add_field(name="Last Updated", value=plugin.getLastUpdatedDatetime())
-                embed.add_field(name="Description", value=plugin.getLongDescription())
+                embed.add_field(name="Description", value=plugin.getLongDescription(), inline=False)
                 await ctx.send(embed=embed)
             except Exception as e:
                 await ctx.send(embed=Embed(description=e, timestamp=datetime.now(),
