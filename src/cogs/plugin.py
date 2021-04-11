@@ -22,12 +22,11 @@ class Plugin(commands.Cog):
                 embed = Embed(title=plugin.getName(), timestamp=datetime.now(),
                                            color=color.minehut).set_footer(
                     text="Requested by " + ctx.author.name)
-            except IllegalArgumentError:
-                embed = Embed(description="Server was not found.", timestamp=datetime.now(),
-                                           color=color.error).set_footer(
-                    text="Requested by " + ctx.author.name)
-            finally:
                 await ctx.send(embed=embed)
+            except IllegalArgumentError:
+                await ctx.send(embed=Embed(description="Server was not found.", timestamp=datetime.now(),
+                                           color=color.error).set_footer(
+                    text="Requested by " + ctx.author.name))
         except Exception as e:
             print(e)
 
