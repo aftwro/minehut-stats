@@ -5,8 +5,8 @@ import discord
 from discord.ext import commands
 from replit import db
 
-from .cogs.api.data import getPrefix
-from .revive import revive
+from cogs.api.data import getPrefix
+from revive import revive
 
 """
 Create Bot
