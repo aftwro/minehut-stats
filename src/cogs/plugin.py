@@ -4,7 +4,6 @@ import minehut
 from discord import Embed
 from discord.ext import commands
 from discord.ext.commands import BucketType
-from minehut import IllegalArgumentError
 
 from .api.color import color
 
@@ -22,8 +21,8 @@ class Plugin(commands.Cog):
                           color=color.minehut).set_footer(
                 text="Requested by " + ctx.author.name)
             await ctx.send(embed=embed)
-        except IllegalArgumentError:
-            await ctx.send(embed=Embed(description="Server was not found.", timestamp=datetime.now(),
+        except Exception as e:
+            await ctx.send(embed=Embed(description=e, timestamp=datetime.now(),
                                        color=color.error).set_footer(
                 text="Requested by " + ctx.author.name))
 
