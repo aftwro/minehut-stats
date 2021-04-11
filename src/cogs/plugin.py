@@ -19,7 +19,7 @@ class Plugin(commands.Cog):
         try:
             try:
                 plugin = minehut.getPlugin(query)
-                embed = embed = Embed(title=plugin.getName(), timestamp=datetime.now(),
+                embed = Embed(title=plugin.getName(), timestamp=datetime.now(),
                                            color=color.minehut).set_footer(
                     text="Requested by " + ctx.author.name)
             except IllegalArgumentError:
