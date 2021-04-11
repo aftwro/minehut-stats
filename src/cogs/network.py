@@ -15,19 +15,16 @@ class Network(commands.Cog):
     @commands.command(name='network')
     @commands.cooldown(1, 2, BucketType.user)
     async def _network(self, ctx):
-        try:
-            async with ctx.typing():
-                embed = Embed(title='Network', timestamp=datetime.now(), color=color.minehut).set_footer(
-                    text="Requested by " + ctx.author.name)
-                embed.add_field(name='Players Online', value=f"{minehut.getPlayerCount():,d}")
-                embed.add_field(name='Severs Online', value=f"{minehut.getServerCount():,d}")
-                embed.add_field(name='Server Max', value=f"{minehut.getServerCap():,d}")
-                embed.add_field(name='Top Servers', value="".join(
-                    [f"{index}. {server.getName()} ({server.getPlayerCount():,d} players)\n" for index, server in
-                     enumerate(minehut.getTop5(), start=1)]), inline=False)
-                await ctx.send(embed=embed)
-        except Exception as e:
-            print(e)
+        async with ctx.typing():
+            embed = Embed(title='Network', timestamp=datetime.now(), color=color.minehut).set_footer(
+                text="Requested by " + ctx.author.name)
+            embed.add_field(name='Players Online', value=f"{minehut.getPlayerCount():,d}")
+            embed.add_field(name='Severs Online', value=f"{minehut.getServerCount():,d}")
+            embed.add_field(name='Server Max', value=f"{minehut.getServerCap():,d}")
+            embed.add_field(name='Top Servers', value="".join(
+                [f"{index}. {server.getName()} ({server.getPlayerCount():,d} players)\n" for index, server in
+                 enumerate(minehut.getTop5(), start=1)]), inline=False)
+            await ctx.send(embed=embed)
 
 
 def setup(client):

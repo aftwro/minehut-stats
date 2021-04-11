@@ -1,6 +1,7 @@
 {
   "_help": {
     "description": "Shows the help menu.",
+    "syntax": "help [command]",
     "permissions": null,
     "aliases": null
   }

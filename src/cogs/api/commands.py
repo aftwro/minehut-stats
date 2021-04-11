@@ -14,6 +14,7 @@ def commandEmbed(author, command: str) -> Embed:
         embed = Embed(title=command.strip('_'), description=data['description'], color=color.info,
                       timestamp=datetime.now()).set_footer(
             text="Requested by " + author.name)
+        embed.add_field(name="Syntax", value=f"`{data['syntax']}`")
         if data['aliases'] is not None:
             embed.add_field(name="Aliases", value=data['aliases'])
         if data['permissions'] is not None:

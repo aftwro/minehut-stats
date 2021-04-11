@@ -28,7 +28,7 @@ class Core(commands.Cog):
     @commands.cooldown(1, 1, BucketType.user)
     async def _source(self, ctx):
         embed = Embed(
-            description="You can view the source of Minehut Stats [here](https://github.com/SuperOrca/Minehut-Stats).",
+            description="You can view my source [here](https://github.com/SuperOrca/Minehut-Stats).",
             timestamp=datetime.now(), color=color.info).set_footer(
             text="Requested by " + ctx.author.name)
         await ctx.send(embed=embed)
