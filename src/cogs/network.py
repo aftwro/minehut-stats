@@ -4,7 +4,7 @@ import minehut
 from discord import Embed
 from discord.ext import commands
 
-from api.color import color
+from .api.color import color
 
 
 class Network(commands.Cog):
@@ -23,3 +23,7 @@ class Network(commands.Cog):
                 [f"{index}. {server.getName()} ({server.getPlayerCount():,d} players)" for index, server in
                  enumerate(minehut.getTop5(), start=1)]), inline=False)
         await ctx.send(embed=embed)
+
+
+def setup(client):
+    client.add_cog(Network(client))

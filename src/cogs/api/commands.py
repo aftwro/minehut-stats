@@ -3,7 +3,7 @@ from datetime import datetime
 
 from discord import Embed
 
-from color import color
+from .color import color
 
 
 def commandEmbed(author, command: str) -> Embed:

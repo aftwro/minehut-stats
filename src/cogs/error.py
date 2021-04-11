@@ -1,8 +1,8 @@
 import discord
 from discord.ext import commands
 
-from api.color import color
-from api.commands import commandEmbed
+from .api.color import color
+from .api.commands import commandEmbed
 
 
 class ErrorHandler(commands.Cog):
