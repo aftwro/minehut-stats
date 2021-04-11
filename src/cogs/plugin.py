@@ -19,13 +19,15 @@ class Plugin(commands.Cog):
         async with ctx.typing():
             try:
                 plugin = minehut.getPlugin(query)
+                updated = await formatTime(plugin.getLastUpdatedDatetime())
+                created = await formatTime(plugin.getCreatedDatetime())
                 embed = Embed(title=plugin.getName(), timestamp=datetime.now(),
                               color=color.minehut).set_footer(
                     text="Requested by " + ctx.author.name)
                 embed.add_field(name="ID", value=plugin.getId())
                 embed.add_field(name="Version", value=plugin.getVersion())
-                embed.add_field(name="Created", value=formatTime(plugin.getCreatedDatetime()), inline=False)
-                embed.add_field(name="Last Updated", value=formatTime(plugin.getLastUpdatedDatetime()))
+                embed.add_field(name="Created", value=created, inline=False)
+                embed.add_field(name="Last Updated", value=updated)
                 embed.add_field(name="Description", value=plugin.getLongDescription(), inline=False)
                 await ctx.send(embed=embed)
             except Exception as e:
