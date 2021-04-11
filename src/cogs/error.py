@@ -25,7 +25,7 @@ class ErrorHandler(commands.Cog):
         if isinstance(error, commands.MissingPermissions) or \
                 isinstance(error, commands.MissingRequiredArgument) or \
                 isinstance(error, commands.BadArgument):
-            await ctx.send(embed=commandEmbed(ctx.command))
+            await ctx.send(embed=commandEmbed(ctx.author, ctx.command))
 
 
 def setup(client):
