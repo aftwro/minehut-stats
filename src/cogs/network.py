@@ -20,7 +20,7 @@ class Network(commands.Cog):
                 embed.add_field(name='Severs Online', value=f"{minehut.getServerCount():,d}")
                 embed.add_field(name='Server Max', value=f"{minehut.getServerCap():,d}")
                 embed.add_field(name='Top Servers', value="".join(
-                    [f"{index}. {server.getName()} ({server.getPlayerCount():,d} players)" for index, server in
+                    [f"{index}. {server.getName()} ({server.getPlayerCount():,d} players)\n" for index, server in
                      enumerate(minehut.getTop5(), start=1)]), inline=False)
                 await ctx.send(embed=embed)
         except Exception as e:
