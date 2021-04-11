@@ -1,6 +1,6 @@
 from datetime import datetime
 
-import discord
+from discord import Embed
 from discord.ext import commands
 
 from .api.color import color
@@ -17,9 +17,10 @@ class ErrorHandler(commands.Cog):
         if isinstance(error, commands.CommandNotFound):
             pass
         if isinstance(error, commands.CommandOnCooldown):
-            embed = discord.Embed(
-                description=f"This command is on cooldown for another **{round(ctx.command.get_cooldown_retry_after(ctx), 1)}s**.",
-                color=color.error, timestamp=datetime.now())
+            embed = Embed(
+                description=f"This command is on cooldown for another **{round(ctx.command.get_cooldown_retry_after(ctx), 1)} seconds**.",
+                color=color.error, timestamp=datetime.now()).set_footer(
+                text="Requested by " + ctx.author.name)
             await ctx.send(embed=embed)
         if isinstance(error, commands.MissingPermissions) or \
                 isinstance(error, commands.MissingRequiredArgument) or \
