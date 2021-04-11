@@ -3,13 +3,10 @@ from datetime import datetime
 
 import discord
 from discord.ext import commands
-from dotenv import load_dotenv
 from replit import db
 
 from cogs.api.data import getPrefix
 from revive import revive
-
-load_dotenv()
 
 """
 Create Bot
