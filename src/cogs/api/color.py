@@ -2,6 +2,6 @@ from discord import Color
 
 
 class color:
-    info = Color.blurple()
+    info = Color.purple()
     error = Color.red()
     minehut = Color.blue()
