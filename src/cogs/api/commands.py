@@ -7,7 +7,7 @@ from .color import color
 
 
 def commandEmbed(author, command: str) -> Embed:
-    with open("assets/data/commands.json", 'r') as file:
+    with open("./assets/data/commands.json", 'r') as file:
         data = json.load(file)
     if command in data:
         data = data[command]
