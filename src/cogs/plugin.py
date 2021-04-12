@@ -30,8 +30,8 @@ class Plugin(commands.Cog):
                 embed.add_field(name="Last Updated", value=updated)
                 embed.add_field(name="Description", value=plugin.getLongDescription(), inline=False)
                 await ctx.send(embed=embed)
-            except Exception as e:
-                await ctx.send(embed=Embed(description=e, timestamp=datetime.now(),
+            except Exception:
+                await ctx.send(embed=Embed(description="Plugin does not exist.", timestamp=datetime.now(),
                                            color=color.error).set_footer(
                     text="Requested by " + ctx.author.name))
 

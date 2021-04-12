@@ -39,8 +39,8 @@ class Server(commands.Cog):
                 embed.add_field(name="Plugins",
                                 value="".join([f"\t- {plugin.getName()}\n" for plugin in server.getPlugins()]))
                 await ctx.send(embed=embed)
-            except Exception as e:
-                await ctx.send(embed=Embed(description=e, timestamp=datetime.now(),
+            except Exception:
+                await ctx.send(embed=Embed(description="Server does not exist.", timestamp=datetime.now(),
                                            color=color.error).set_footer(
                     text="Requested by " + ctx.author.name))
 
