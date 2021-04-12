@@ -20,11 +20,13 @@ class Core(commands.Cog):
     async def _help(self, ctx, query=None):
         if query is None:
             embed = Embed(title="Minehut Stats Bot",
-                              description="An open source discord.py bot for minehut stats using the minehut-api python library.",
-                              timestamp=datetime.now(), color=color.info).set_footer(
-                    text="Requested by " + ctx.author.name)
-            embed.add_field(name="Bot", value="".join([f"- `{command}`\n" for command in self.BOT_COMMANDS]), inline=False)
-            embed.add_field(name="Minehut", value="".join([f"`{command}`\n" for command in self.MINEHUT_COMMANDS]), inline=False)
+                          description="An open source discord.py bot for minehut stats using the minehut-api python library.",
+                          timestamp=datetime.now(), color=color.info).set_footer(
+                text="Requested by " + ctx.author.name)
+            embed.add_field(name="Bot", value="".join([f"- `{command}`\n" for command in self.BOT_COMMANDS]),
+                            inline=False)
+            embed.add_field(name="Minehut", value="".join([f"- `{command}`\n" for command in self.BOT_COMMANDS]),
+                            inline=False)
         else:
             embed = commandEmbed("_" + query)
         await ctx.send(embed=embed)
