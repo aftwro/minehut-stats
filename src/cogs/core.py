@@ -18,20 +18,16 @@ class Core(commands.Cog):
     @commands.command(name='help')
     @commands.cooldown(1, 1, BucketType.user)
     async def _help(self, ctx, query=None):
-        try:
-            print("yes")
-            if query is None:
-                embed = Embed(title="Minehut Stats Bot",
+        if query is None:
+            embed = Embed(title="Minehut Stats Bot",
                               description="An open source discord.py bot for minehut stats using the minehut-api python library.",
                               timestamp=datetime.now(), color=color.info).set_footer(
                     text="Requested by " + ctx.author.name)
-                embed.add_field(name="Bot", value="".join([f"`{command}`\n" for command in self.BOT_COMMANDS]))
-                embed.add_field(name="Minehut", value="".join([f"`{command}`\n" for command in self.MINEHUT_COMMANDS]))
-            else:
-                embed = commandEmbed("_" + query)
-            await ctx.send(embed=embed)
-        except Exception as e:
-            print(e)
+            embed.add_field(name="Bot", value="".join([f"- `{command}`\n" for command in self.BOT_COMMANDS]), inline=False)
+            embed.add_field(name="Minehut", value="".join([f"`{command}`\n" for command in self.MINEHUT_COMMANDS]), inline=False)
+        else:
+            embed = commandEmbed("_" + query)
+        await ctx.send(embed=embed)
 
     @commands.command(name='source', aliases=['contribute'])
     @commands.cooldown(1, 1, BucketType.user)
