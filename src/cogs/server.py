@@ -24,7 +24,7 @@ class Server(commands.Cog):
                 embed.add_field(name="ID", value=server.getId())
                 embed.add_field(name="Online?", value=str(server.isOnline()))
                 embed.add_field(name="Visible?", value=str(server.isVisible()))
-                embed.add_field(name="Player Count", vaue=server.getPlayerCount())
+                embed.add_field(name="Player Count", value=server.getPlayerCount())
                 embed.add_field(name="Max Players", value=server.getMaxPlayers())
                 embed.add_field(name="Plan", value=server.getServerPlan())
                 embed.add_field(name="Credits", value=f"{server.getCreditsPerDay()} credits per day")
