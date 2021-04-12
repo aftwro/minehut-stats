@@ -10,6 +10,7 @@ from .api.commands import commandEmbed
 BOT_COMMANDS = ['help', 'source', 'invite']
 MINEHUT_COMMANDS = ['server', 'plugin', 'network']
 
+
 class Core(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -23,8 +24,8 @@ class Core(commands.Cog):
                               description="An open source discord.py bot for minehut stats using the minehut-api python library.",
                               timestamp=datetime.now(), color=color.info).set_footer(
                     text="Requested by " + ctx.author.name)
-                embed.add_field("Bot", value=''.join([f"`{command}`\n" for command in BOT_COMMANDS]))
-                embed.add_field("Minehut", value=''.join([f"`{command}`\n" for command in MINEHUT_COMMANDS]))
+                embed.add_field(name="Bot", value=''.join([f"`{command}`\n" for command in BOT_COMMANDS]))
+                embed.add_field(name="Minehut", value=''.join([f"`{command}`\n" for command in MINEHUT_COMMANDS]))
             else:
                 embed = commandEmbed("_" + query)
             await ctx.send(embed=embed)
