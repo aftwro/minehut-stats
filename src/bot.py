@@ -8,6 +8,15 @@ from replit import db
 from cogs.api.data import getPrefix
 from revive import revive
 
+
+class Bot(commands.AutoShardedBot):
+    async def is_owner(self, user: discord.User):
+        if user.id == 331179093447933963:
+            return True
+
+        return await super().is_owner(user)
+
+
 """
 Create Bot
 
@@ -16,7 +25,7 @@ Commands are case insensitive.
 Set uptime attribute for uptime command.
 Remove default help command.
 """
-bot = commands.AutoShardedBot(command_prefix=getPrefix, case_insensitive=True)
+bot = Bot(command_prefix=getPrefix, case_insensitive=True)
 bot.uptime = datetime.utcnow()
 bot.remove_command('help')
 
