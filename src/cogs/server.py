@@ -18,6 +18,8 @@ class Server(commands.Cog):
         async with ctx.typing():
             try:
                 server = minehut.getServer(query)
+                created = await formatTime(server.getCreationDatetime())
+                lastonline = await formatTime(server.getLastOnlineDatetime())
                 embed = Embed(title=server.getName(), timestamp=datetime.now(),
                               color=color.minehut).set_footer(
                     text="Requested by " + ctx.author.name)
@@ -27,11 +29,11 @@ class Server(commands.Cog):
                 embed.add_field(name="Player Count", value=server.getPlayerCount())
                 embed.add_field(name="Max Players", value=server.getMaxPlayers())
                 embed.add_field(name="Plan", value=server.getServerPlan())
-                embed.add_field(name="Credits", value=f"{server.getCreditsPerDay()} credits per day")
+                embed.add_field(name="Credits Per Day", value=server.getCreditsPerDay())
                 embed.add_field(name="Icon", value=server.getIcon())
                 embed.add_field(name="Platform", value=server.getPlatform())
-                embed.add_field(name="Created", value=formatTime(server.getCreationDatetime()))
-                embed.add_field(name="Last Online", value=formatTime(server.getLastOnlineDatetime()))
+                embed.add_field(name="Created", value=created)
+                embed.add_field(name="Last Online", value=lastonline)
                 embed.add_field(name="MOTD", value=server.getMOTD(), inline=False)
                 embed.add_field(name="Plugins", value="".join([f"\t- {plugin.getName()}\n" for plugin in server.getPlugins()]))
                 print(server.getServerProperties())
