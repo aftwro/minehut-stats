@@ -25,7 +25,7 @@ class Core(commands.Cog):
                 text="Requested by " + ctx.author.name)
             embed.add_field(name="Bot", value="".join([f"- `{command}`\n" for command in self.BOT_COMMANDS]),
                             inline=False)
-            embed.add_field(name="Minehut", value="".join([f"- `{command}`\n" for command in self.BOT_COMMANDS]),
+            embed.add_field(name="Minehut", value="".join([f"- `{command}`\n" for command in self.MINEHUT_COMMANDS]),
                             inline=False)
         else:
             embed = commandEmbed("_" + query)
