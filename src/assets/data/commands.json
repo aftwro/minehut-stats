@@ -4,5 +4,35 @@
     "syntax": "help [command]",
     "permissions": null,
     "aliases": null
+  },
+  "_source": {
+    "description": "Shows the source.",
+    "syntax": "source",
+    "permissions": null,
+    "aliases": "contribute"
+  },
+  "_invite": {
+    "description": "Shows the invite link.",
+    "syntax": "invite",
+    "permissions": null,
+    "aliases": null
+  },
+  "_network": {
+    "description": "Shows the network stats.",
+    "syntax": "network",
+    "permissions": null,
+    "aliases": null
+  },
+  "_server": {
+    "description": "Shows the server's stats.",
+    "syntax": "server <server>",
+    "permissions": null,
+    "aliases": null
+  },
+  "_plugin": {
+    "description": "Shows the plugin's stats.",
+    "syntax": "plugin <plugin>",
+    "permissions": null,
+    "aliases": null
   }
 }

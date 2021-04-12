@@ -32,7 +32,7 @@ EXTENSIONS = [
 @bot.event
 async def on_ready():
     db['prefixes'] = {} if 'prefixes' not in db else db['prefixes']
-    await bot.change_presence(status=discord.Status.online, activity=discord.Game(';help'))
+    await bot.change_presence(status=discord.Status.online, activity=discord.Game('mh!help'))
     bot.load_extension("jishaku")
     for extension in EXTENSIONS:
         bot.load_extension(extension)
