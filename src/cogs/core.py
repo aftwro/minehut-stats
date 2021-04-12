@@ -37,7 +37,7 @@ class Core(commands.Cog):
     @commands.cooldown(1, 1, BucketType.user)
     async def _invite(self, ctx):
         embed = Embed(
-            description="You can invite me [here](https://discord.com/api/oauth2/authorize?client_id=830206810644021309&permissions=51264&scope=bot).",
+            description="You can invite me [here](https://discord.com/api/oauth2/authorize?client_id=830206810644021309&permissions=8&scope=bot).",
             timestamp=datetime.now(), color=color.info).set_footer(
             text="Requested by " + ctx.author.name)
         await ctx.send(embed=embed)

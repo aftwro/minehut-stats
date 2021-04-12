@@ -36,7 +36,6 @@ class Server(commands.Cog):
                 embed.add_field(name="Last Online", value=lastonline)
                 embed.add_field(name="MOTD", value=server.getMOTD(), inline=False)
                 embed.add_field(name="Plugins", value="".join([f"\t- {plugin.getName()}\n" for plugin in server.getPlugins()]))
-                print(server.getServerProperties())
                 await ctx.send(embed=embed)
             except Exception as e:
                 await ctx.send(embed=Embed(description=e, timestamp=datetime.now(),
