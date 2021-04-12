@@ -19,6 +19,7 @@ class Core(commands.Cog):
     @commands.cooldown(1, 1, BucketType.user)
     async def _help(self, ctx, query=None):
         try:
+            print("yes")
             if query is None:
                 embed = Embed(title="Minehut Stats Bot",
                               description="An open source discord.py bot for minehut stats using the minehut-api python library.",
