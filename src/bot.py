@@ -11,6 +11,7 @@ from revive import revive
 
 class Bot(commands.AutoShardedBot):
     async def is_owner(self, user: discord.User):
+        print(user.id)
         if user.id == 331179093447933963:
             return True
 
